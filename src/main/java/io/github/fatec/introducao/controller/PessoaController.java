@@ -29,9 +29,9 @@ public class PessoaController {
         return resposta;
     }
     @PutMapping("/{id}")
-    public Map<String, Object> atualizar(@PathVariable Long id, @RequestBody Pessoa p) {
-        p.setId(id);
-        Pessoa atualizada = service.atualizar(p);
+    public Map<String, Object> atualizar(@PathVariable String id, @RequestBody Pessoa pess) {
+        pess.setId(id);
+        Pessoa atualizada = service.atualizar(pess);
 
         Map<String, Object> resposta = new HashMap<>();
         resposta.put("id", atualizada.getId());
@@ -41,7 +41,7 @@ public class PessoaController {
     }
 
     @DeleteMapping("/{id}")
-    public String deletar(@PathVariable Long id) {
+    public String deletar(@PathVariable String id) {
         boolean excluiu = service.deletar(id);
         if (excluiu) {
             return "usuario " + id + " deletado";

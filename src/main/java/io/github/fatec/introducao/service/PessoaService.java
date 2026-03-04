@@ -8,15 +8,15 @@ import java.util.*;
 
 @Service
 public class PessoaService {
-private Map<Long, Pessoa> armazenamentoPessoa = new HashMap<>();
-private Long proximoId =1L;
+private Map<String, Pessoa> armazenamentoPessoa = new HashMap<>();
 
 public Collection<Pessoa> listar(){
     return armazenamentoPessoa.values();
 }
 
 public Pessoa criar(Pessoa pessoa){
-    pessoa.setId(proximoId++);
+    String novoId = UUID.randomUUID().toString();
+    pessoa.setId(novoId);
     armazenamentoPessoa.put(pessoa.getId(), pessoa);
     return pessoa;
 }
@@ -25,7 +25,7 @@ public Pessoa atualizar(Pessoa pessoa){
     return pessoa;
 }
 
-public boolean deletar(Long id){
+public boolean deletar(String id){
     if(armazenamentoPessoa.containsKey(id)){
         armazenamentoPessoa.remove(id);
         return true;
