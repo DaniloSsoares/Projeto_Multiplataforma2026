@@ -1,5 +1,6 @@
 package io.github.fatec;
 
+import io.github.fatec.Integration.externo.enderecoComFeign;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +11,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class IntroducaoApplication implements CommandLineRunner {
 
 
-	public final EnderecoComFeign client;
+	public final enderecoComFeign client;
 
-	public IntroducaoApplication(EnderecoComFeign client) {
+	public IntroducaoApplication(enderecoComFeign client) {
 		this.client = client;
 	}
 
